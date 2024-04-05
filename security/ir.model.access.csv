@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_caja_banco,caja.banco,model_caja_banco,base.group_user,1,1,1,1
+access_caja_cuenta,caja.cuenta,model_caja_cuenta,base.group_user,1,1,1,1
+access_caja_concepto,caja.concepto,model_caja_concepto,base.group_user,1,1,1,1
+access_caja_impuesto,caja.impuesto,model_caja_impuesto,base.group_user,1,1,1,1
+access_caja_movimiento,caja.movimiento,model_caja_movimiento,base.group_user,1,1,1,1
+access_caja_proveedor,caja.proveedor,model_caja_proveedor,base.group_user,1,1,1,1
+access_caja_tag,caja.tag,model_caja_tag,base.group_user,1,1,1,1
+access_caja_tasa,caja.tasa,model_caja_tasa,base.group_user,1,1,1,1

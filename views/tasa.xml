@@ -1,0 +1,88 @@
+<odoo>
+  <data>
+
+    <record id="tasa_search_view" model="ir.ui.view">
+        <field name="name">caja.tasa.search</field>
+        <field name="model">caja.tasa</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Referencia"/>
+                <field name="create_uid" string="Usuario"/>
+                <separator/>
+                <filter string="Archivado" name="inactive" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Agrupar por:">
+                    <filter name="agrupar_fecha" context="{'group_by': 'fecha'}" string="Fecha"/>
+                    <filter name="agrupar_usuario" context="{'group_by': 'create_uid'}" string="Usuario"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="tasa_form_view" model="ir.ui.view">
+        <field name="name">caja.tasa.form</field>
+        <field name="model">caja.tasa</field>
+        <field name="arch" type="xml">
+            <form create="1" edit="0" duplicate="0" delete="0">
+                <header>
+                    <button name="consultar_tasa_bcv"
+                        string="Consultar"
+                        type="object"
+                        icon="fa-search"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="fecha"/>
+                        <field name="tasa"/>
+                        <field name="create_uid" string="Usuario"/>
+                        <field name="name" invisible="1"/>
+                    </group>
+                    <field name="notas" nolabel="1"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="tasa_tree_view" model="ir.ui.view">
+        <field name="name">caja.tasa.tree</field>
+        <field name="model">caja.tasa</field>
+        <field name="arch" type="xml">
+            <tree create="1" duplicate="0" delete="1" edit="0">
+                <header>
+                    <button name="consultar_tasa_bcv"
+                        string="Consultar"
+                        type="object"
+                        icon="fa-search"/>
+                </header>
+                <field name="fecha"/>
+                <field name="tasa"/>
+                <field name="create_uid" string="Usuario"/>
+                <field name="notas" optional="hide"/>
+                <field name="create_date" string="Fecha y hora de creación" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="tasa_graph_view" model="ir.ui.view">
+        <field name="name">caja.tasa.graph</field>
+        <field name="model">caja.tasa</field>
+        <field name="arch" type="xml">
+            <graph type="line">
+                <field name="fecha" interval="day"/>
+                <field name="tasa" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="tasa_act" model="ir.actions.act_window">
+        <field name="name">Tasas de cambio</field>
+        <field name="res_model">caja.tasa</field>
+        <field name="view_mode">tree,form,graph</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay nada aquí
+            </p>
+        </field>
+    </record>
+
+  </data>
+</odoo>

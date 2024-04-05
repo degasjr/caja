@@ -1,0 +1,81 @@
+<odoo>
+  <data>
+
+    <record id="proveedor_search_view" model="ir.ui.view">
+        <field name="name">caja.proveedor.search</field>
+        <field name="model">caja.proveedor</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Nombre"/>
+                <field name="rif" string="RIF"/>
+                <separator/>
+                <filter name="archivado" string="Archivado" domain="[('active','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="proveedor_form_view" model="ir.ui.view">
+        <field name="name">caja.proveedor.form</field>
+        <field name="model">caja.proveedor</field>
+        <field name="arch" type="xml">
+            <form create="1" edit="1" delete="1" duplicate="0">
+                <sheet>
+                    <field name="color" invisible="1"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"
+                                   required="1"
+                                   placeholder="Nombre legal"/>
+                        </h1>
+                    </div>
+                    <group string="Información">
+                        <field name="rif" placeholder="Vacío"/>
+                        <field name="telefono" widget="phone" placeholder="Vacío"/>
+                    </group>
+                    <separator string="Dirección fiscal"/>
+                    <field name="direccion" nolabel="1"
+                        placeholder="Indique la dirección fiscal completa"/>
+                    <field name="notas" invisible="1"/>
+                    <notebook>
+                        <page string="Movimientos">
+                            <field name="movimiento_ids" readonly="1"/>
+                            <field name="total_movimientos" invisible="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="proveedor_tree_view" model="ir.ui.view">
+        <field name="name">caja.proveedor.tree</field>
+        <field name="model">caja.proveedor</field>
+        <field name="arch" type="xml">
+            <tree delete="1" duplicate="0" create="1" edit="1">
+                <field name="name"/>
+                <field name="rif" optional="hide"/>
+                <field name="telefono"/>
+                <field name="direccion" optional="hide"/>
+                <field name="total_movimientos" sum="Total"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="proveedor_act" model="ir.actions.act_window">
+        <field name="name">Proveedores</field>
+        <field name="res_model">caja.proveedor</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Registrar un proveedor
+            </p>
+        </field>
+    </record>
+
+  </data>
+</odoo>

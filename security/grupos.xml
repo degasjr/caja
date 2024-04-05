@@ -1,0 +1,174 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Categoría -->
+        <record id="module_caja_category" model="ir.module.category">
+            <field name="name">Caja</field>
+            <field name="sequence">0</field>
+        </record>
+
+        <!-- Grupos -->
+        <record id="grupo_administrador" model="res.groups">
+            <field name="name">Administrador</field>
+            <field name="implied_ids" eval="[(6,0,[ref('base.group_system'),ref('base.group_allow_export')])]"/>
+            <field name="category_id" ref="module_caja_category"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+        <record id="grupo_usuario" model="res.groups">
+            <field name="name">Usuarios</field>
+            <field name="category_id" ref="module_caja_category"/>
+            <field name="implied_ids" eval="[(6,0,[ref('base.group_user'),ref('base.group_allow_export')])]"/>
+        </record>
+        
+        <!-- Permisos del grupo administrador -->
+        <record id="regla_administrador_banco" model="ir.rule">
+            <field name="name">El grupo administrador puede ver todos los bancos</field>
+            <field name="model_id" ref="model_caja_banco"/>
+            <field name="groups" eval="[(4, ref('grupo_administrador'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <record id="regla_administrador_cuenta" model="ir.rule">
+            <field name="name">El grupo administrador puede ver todas las cuentas</field>
+            <field name="model_id" ref="model_caja_cuenta"/>
+            <field name="groups" eval="[(4, ref('grupo_administrador'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <record id="regla_administrador_concepto" model="ir.rule">
+            <field name="name">El grupo administrador puede ver todos los conceptos</field>
+            <field name="model_id" ref="model_caja_concepto"/>
+            <field name="groups" eval="[(4, ref('grupo_administrador'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <record id="regla_administrador_impuesto" model="ir.rule">
+            <field name="name">El grupo administrador puede ver todos los impuestos</field>
+            <field name="model_id" ref="model_caja_impuesto"/>
+            <field name="groups" eval="[(4, ref('grupo_administrador'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <record id="regla_administrador_movimiento" model="ir.rule">
+            <field name="name">El grupo administrador puede ver todos los movimientos</field>
+            <field name="model_id" ref="model_caja_movimiento"/>
+            <field name="groups" eval="[(4, ref('grupo_administrador'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <record id="regla_administrador_proveedor" model="ir.rule">
+            <field name="name">El grupo administrador puede ver todos los proveedores</field>
+            <field name="model_id" ref="model_caja_proveedor"/>
+            <field name="groups" eval="[(4, ref('grupo_administrador'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <record id="regla_administrador_tag" model="ir.rule">
+            <field name="name">El grupo administrador puede ver todas las etiquetas</field>
+            <field name="model_id" ref="model_caja_tag"/>
+            <field name="groups" eval="[(4, ref('grupo_administrador'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <record id="regla_administrador_tasa" model="ir.rule">
+            <field name="name">El grupo administrador puede ver todas las tasas de cambio</field>
+            <field name="model_id" ref="model_caja_tasa"/>
+            <field name="groups" eval="[(4, ref('grupo_administrador'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
+        <!-- Permisos del grupo usuarios -->
+        <record id="regla_usuario_banco" model="ir.rule">
+            <field name="name">El grupo usuarios puede ver bancos</field>
+            <field name="model_id" ref="model_caja_banco"/>
+            <field name="groups" eval="[(4, ref('grupo_usuario'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+        <record id="regla_usuario_cuenta" model="ir.rule">
+            <field name="name">El grupo usuarios puede ver cuentas</field>
+            <field name="model_id" ref="model_caja_cuenta"/>
+            <field name="groups" eval="[(4, ref('grupo_usuario'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+        <record id="regla_usuario_concepto" model="ir.rule">
+            <field name="name">El grupo usuarios puede ver conceptos</field>
+            <field name="model_id" ref="model_caja_concepto"/>
+            <field name="groups" eval="[(4, ref('grupo_usuario'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+        <record id="regla_usuario_impuesto" model="ir.rule">
+            <field name="name">El grupo usuarios puede ver impuestos</field>
+            <field name="model_id" ref="model_caja_impuesto"/>
+            <field name="groups" eval="[(4, ref('grupo_usuario'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+        <record id="regla_usuario_movimiento" model="ir.rule">
+            <field name="name">El grupo usuarios solo puede ver sus propios movimientos</field>
+            <field name="model_id" ref="model_caja_movimiento"/>
+            <field name="groups" eval="[(4, ref('grupo_usuario'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+            <field name="domain_force">[('titular_id','=',user.id)]</field>
+        </record>
+        <record id="regla_usuario_proveedor" model="ir.rule">
+            <field name="name">El grupo usuarios puede ver proveedores</field>
+            <field name="model_id" ref="model_caja_proveedor"/>
+            <field name="groups" eval="[(4, ref('grupo_usuario'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+        <record id="regla_usuario_tag" model="ir.rule">
+            <field name="name">El grupo usuarios puede ver etiquetas</field>
+            <field name="model_id" ref="model_caja_tag"/>
+            <field name="groups" eval="[(4, ref('grupo_usuario'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+        <record id="regla_usuario_tasa" model="ir.rule">
+            <field name="name">El grupo usuarios puede ver tasas de cambio</field>
+            <field name="model_id" ref="model_caja_tasa"/>
+            <field name="groups" eval="[(4, ref('grupo_usuario'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+        
+    </data>
+</odoo>

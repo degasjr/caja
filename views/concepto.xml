@@ -1,0 +1,70 @@
+<odoo>
+  <data>
+
+    <record id="concepto_search_view" model="ir.ui.view">
+        <field name="name">caja.concepto.search</field>
+        <field name="model">caja.concepto</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Nombre"/>
+                <separator/>
+                <filter name="archivado" string="Archivado" domain="[('active','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="concepto_form_view" model="ir.ui.view">
+        <field name="name">caja.concepto.form</field>
+        <field name="model">caja.concepto</field>
+        <field name="arch" type="xml">
+            <form create="1" edit="1" delete="1" duplicate="0">
+                <sheet>
+                    <field name="color" invisible="1"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"
+                                   required="1"
+                                   placeholder="Nombre descriptivo"/>
+                        </h1>
+                    </div>
+                    <field name="notas" invisible="1"/>
+                    <notebook>
+                        <page string="Movimientos">
+                            <field name="movimiento_ids" readonly="1"/>
+                            <field name="total_movimientos" invisible="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="concepto_tree_view" model="ir.ui.view">
+        <field name="name">caja.concepto.tree</field>
+        <field name="model">caja.concepto</field>
+        <field name="arch" type="xml">
+            <tree delete="1" duplicate="0" create="1" edit="1" sample="1">
+                <field name="name"/>
+                <field name="notas" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="concepto_act" model="ir.actions.act_window">
+        <field name="name">Conceptos</field>
+        <field name="res_model">caja.concepto</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay nada aquí
+            </p>
+        </field>
+    </record>
+
+  </data>
+</odoo>

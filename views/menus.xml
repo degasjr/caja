@@ -1,0 +1,79 @@
+<odoo>
+  <data>
+
+    <!-- Top menu -->
+
+    <menuitem
+      id="caja_topmenu"
+      name="Caja"
+      sequence="0"/>
+    
+    <!-- Movimientos -->
+    <menuitem
+      id="movimiento_menu"
+      name="Movimientos"
+      parent="caja_topmenu"
+      action="movimiento_act"
+      sequence="0"/>
+    
+    <!-- Bancos -->
+    <menuitem
+      id="banco_menu"
+      name="Bancos"
+      parent="caja_topmenu"
+      sequence="1"/>
+    <menuitem
+      id="banco_submenu"
+      name="Bancos"
+      parent="banco_menu"
+      action="banco_act"
+      sequence="0"/>
+    <menuitem
+      id="cuenta_submenu"
+      name="Cuentas"
+      parent="banco_menu"
+      action="cuenta_act"
+      sequence="1"/>
+    
+    <!-- Conceptos -->
+    <menuitem
+      id="concepto_menu"
+      name="Conceptos"
+      parent="caja_topmenu"
+      action="concepto_act"
+      sequence="2"/>
+    
+    <!-- Impuestos -->
+    <menuitem
+      id="impuesto_menu"
+      name="Impuestos"
+      parent="caja_topmenu"
+      action="impuesto_act"
+      sequence="3"/>
+    
+    <!-- Proveedores -->
+    <menuitem
+      id="proveedor_menu"
+      name="Proveedores"
+      parent="caja_topmenu"
+      action="proveedor_act"
+      sequence="4"/>
+    
+    <!-- Etiquetas -->
+    <menuitem
+      id="tag_menu"
+      name="Etiquetas"
+      parent="caja_topmenu"
+      action="tag_act"
+      sequence="5"/>
+    
+    <!-- Tasas de cambio -->
+    <menuitem
+      id="tasa_menu"
+      name="Tasas de cambio"
+      parent="caja_topmenu"
+      action="tasa_act"
+      sequence="6"/>
+
+  </data>
+</odoo>

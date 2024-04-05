@@ -1,0 +1,75 @@
+<odoo>
+  <data>
+
+    <template id="plantilla_web" inherit_id="web.layout" name="Plantilla web principal">
+        <xpath expr="//title" position="replace">
+            <title t-esc="'IADEY'"/>
+        </xpath>
+        <xpath expr="//link" position="replace">
+            <link type="image/x-icon" rel="shortcut icon" t-att-href="'/web/static/img/favicon.ico'"/>
+        </xpath>
+    </template>
+
+    <template id="plantilla_login" inherit_id="web.login_layout" name="Plantilla de inicio de sesión">
+        <xpath expr="//div[hasclass('card-body')]" position="replace">
+            <div t-attf-class="text-center pb-3 border-bottom {{'mb-3' if form_small else 'mb-4'}}">
+                <img t-attf-src="/caja/static/description/icon.png"
+                    alt="Logo"
+                    style="max-height:120px; max-width: 100%; width:auto"/>
+            </div>
+            <t t-out="0"/>
+            <div class="text-center small mt-4 pt-3 border-top" t-if="not disable_footer">
+                <t t-if="not disable_database_manager">
+                    <a class="border-right pr-2 mr-1" href="/web/database/manager">Gestionar bases de datos</a>
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="area_login" inherit_id="web.login" name="Inicio de sesión">
+        <xpath expr="//div[hasclass('field-db')]" position="replace">
+            <div class="form-group field-db" t-if="databases and len(databases) &gt; 1">
+                <label for="db" class="col-form-label">Base de datos</label>
+                <div t-attf-class="input-group {{'input-group-sm' if form_small else ''}}">
+                    <input type="text" name="db" t-att-value="request.db" id="db" t-attf-class="form-control #{'form-control-sm' if form_small else ''}" required="required" readonly="readonly"/>
+                    <span class="input-group-append">
+                        <a role="button" href="/web/database/selector" class="btn btn-secondary">Seleccionar <i class="fa fa-database" role="img" aria-label="Database" title="Database"></i></a>
+                    </span>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('field-login')]" position="replace">
+            <div class="form-group field-login">
+                <label for="login">Usuario</label>
+                <input type="text"
+                    placeholder="Usuario"
+                    name="login"
+                    t-att-value="login"
+                    id="login"
+                    t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
+                    required="required"
+                    autofocus="autofocus"
+                    autocapitalize="off"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('field-password')]" position="replace">
+            <div class="form-group field-password">
+                <label for="password">Contraseña</label>
+                <input type="password"
+                    placeholder="Contraseña"
+                    name="password"
+                    id="password"
+                    t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
+                    required="required"
+                    autocomplete="current-password"
+                    t-att-autofocus="'autofocus' if login else None"
+                    maxlength="4096"/>
+            </div>
+        </xpath>
+        <xpath expr="//button[@class='btn btn-primary btn-block']" position="replace">
+            <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+        </xpath>
+    </template>
+
+  </data>
+</odoo>

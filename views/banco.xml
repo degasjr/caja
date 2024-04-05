@@ -1,0 +1,163 @@
+<odoo>
+  <data>
+
+    <record id="banco_search_view" model="ir.ui.view">
+        <field name="name">caja.banco.search</field>
+        <field name="model">caja.banco</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Nombre"/>
+                <field name="code" string="Código"/>
+                <separator/>
+                <filter name="archivado" string="Archivado" domain="[('active','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="cuenta_search_view" model="ir.ui.view">
+        <field name="name">caja.cuenta.search</field>
+        <field name="model">caja.cuenta</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Número de cuenta"/>
+                <field name="banco_id" string="Banco"/>
+                <field name="titular_id" string="Titular"/>
+                <separator/>
+                <filter name="archivado" string="Archivado" domain="[('active','=',False)]"/>
+                <group expand="0" string="Agrupar por:">
+                    <filter name="agrupar_titular" string="Titular" context="{'group_by': 'titular_id'}"/>
+                    <filter name="agrupar_banco" string="Banco" context="{'group_by': 'banco_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="banco_form_view" model="ir.ui.view">
+        <field name="name">caja.banco.form</field>
+        <field name="model">caja.banco</field>
+        <field name="arch" type="xml">
+            <form create="1" edit="1" delete="1" duplicate="0">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"
+                                   required="1"
+                                   placeholder="Nombre de la entidad bancaria"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="code"
+                                required="1"
+                                placeholder="Código único de 4 dígitos"/>
+                        <field name="color" invisible="1"/>
+                    </group>
+                    <field name="notas" invisible="1"/>
+                    <notebook>
+                        <page string="Cuentas">
+                            <field name="cuenta_ids" readonly="1"/>
+                            <field name="total_cuentas" invisible="1"/>
+                        </page>
+                        <page string="Movimientos">
+                            <field name="movimiento_ids" readonly="1"/>
+                            <field name="total_movimientos" invisible="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="cuenta_form_view" model="ir.ui.view">
+        <field name="name">caja.cuenta.form</field>
+        <field name="model">caja.cuenta</field>
+        <field name="arch" type="xml">
+            <form create="1" edit="1" delete="1" duplicate="0">
+                <sheet>
+                    <field name="color" invisible="1"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"
+                                required="1"
+                                placeholder="00000000000000000000"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="titular_id" required="1" placeholder="Requerido"/>
+                        <field name="banco_id"
+                            required="1"
+                            options='{"no_open": True, "no_create": True}'
+                            placeholder="Seleccione"/>
+                        <field name="moneda_id"/>
+                        <field name="currency_id"/>
+                        <field name="saldo"/>
+                        <field name="company_id" invisible="1"/>
+                    </group>
+                    <field name="notas" invisible="1"/>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="banco_tree_view" model="ir.ui.view">
+        <field name="name">caja.banco.tree</field>
+        <field name="model">caja.banco</field>
+        <field name="arch" type="xml">
+            <tree delete="1" duplicate="0" create="1" edit="1">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="notas" invisible="1"/>
+                <field name="total_cuentas" sum="Total"/>
+                <field name="total_movimientos" sum="Total"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="cuenta_tree_view" model="ir.ui.view">
+        <field name="name">caja.cuenta.tree</field>
+        <field name="model">caja.cuenta</field>
+        <field name="arch" type="xml">
+            <tree delete="1" duplicate="0" create="1" edit="0" sample="1">
+                <field name="banco_id"/>
+                <field name="name"/>
+                <field name="titular_id"/>
+                <field name="notas" invisible="1"/>
+                <field name="saldo" optional="hide"/>
+                <field name="company_id" invisible="1"/>
+                <field name="currency_id" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="banco_act" model="ir.actions.act_window">
+        <field name="name">Bancos</field>
+        <field name="res_model">caja.banco</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Registrar un banco
+            </p>
+        </field>
+    </record>
+
+    <record id="cuenta_act" model="ir.actions.act_window">
+        <field name="name">Cuentas</field>
+        <field name="res_model">caja.cuenta</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crear una cuenta bancaria
+            </p>
+        </field>
+    </record>
+
+  </data>
+</odoo>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        
+        <record id="banco_vzla" model="caja.banco">
+            <field name="name">Banco de Venezuela</field>
+            <field name="notas">BANCO DE VENEZUELA, S.A. BANCO UNIVERSAL.</field>
+            <field name="code">0102</field>
+        </record>
+        
+        <record id="banco_venezolano_credito" model="caja.banco">
+            <field name="name">Banco Venezolano de Crédito</field>
+            <field name="notas">VENEZOLANO DE CRÉDITO, S.A., BANCO UNIVERSAL.</field>
+            <field name="code">0104</field>
+        </record>
+        
+        <record id="banco_mercantil" model="caja.banco">
+            <field name="name">Mercantil</field>
+            <field name="notas">MERCANTIL, C.A., BANCO UNIVERSAL.</field>
+            <field name="code">0105</field>
+        </record>
+        
+        <record id="banco_provincial" model="caja.banco">
+            <field name="name">Provincial</field>
+            <field name="notas">BANCO PROVINCIAL, S.A. BANCO UNIVERSAL.</field>
+            <field name="code">0108</field>
+        </record>
+        
+        <record id="banco_bancaribe" model="caja.banco">
+            <field name="name">Bancaribe</field>
+            <field name="notas">BANCO DEL CARIBE C.A., BANCO UNIVERSAL (BANCARIBE).</field>
+            <field name="code">0114</field>
+        </record>
+        
+        <record id="banco_exterior" model="caja.banco">
+            <field name="name">Banco Exterior</field>
+            <field name="notas">BANCO EXTERIOR, C.A., BANCO UNIVERSAL.</field>
+            <field name="code">0115</field>
+        </record>
+        
+        <record id="banco_bod" model="caja.banco">
+            <field name="name">BOD</field>
+            <field name="code">0116</field>
+        </record>
+        
+        <record id="banco_caroni" model="caja.banco">
+            <field name="name">Caroní</field>
+            <field name="notas">BANCO CARONÍ_x008d_, C.A., BANCO UNIVERSAL.</field>
+            <field name="code">0128</field>
+        </record>
+        
+        <record id="banco_banesco" model="caja.banco">
+            <field name="name">Banesco</field>
+            <field name="notas">BANESCO BANCO UNIVERSAL, C.A.</field>
+            <field name="code">0134</field>
+        </record>
+        
+        <record id="banco_sofitasa" model="caja.banco">
+            <field name="name">Sofitasa</field>
+            <field name="notas">BANCO SOFITASA BANCO UNIVERSAL, C.A.</field>
+            <field name="code">0137</field>
+        </record>
+        
+        <record id="banco_plaza" model="caja.banco">
+            <field name="name">Banco Plaza</field>
+            <field name="notas">BANCO PLAZA, C.A., BANCO UNIVERSAL.</field>
+            <field name="code">0138</field>
+        </record>
+        
+        <record id="banco_bangente" model="caja.banco">
+            <field name="name">Bangente</field>
+            <field name="code">0146</field>
+        </record>
+        
+        <record id="banco_fondo_comun" model="caja.banco">
+            <field name="name">Fondo Común</field>
+            <field name="notas">BFC BANCO FONDO COMUN, C.A. BANCO UNIVERSAL.</field>
+            <field name="code">0151</field>
+        </record>
+        
+        <record id="banco_100x" model="caja.banco">
+            <field name="name">100% Banco</field>
+            <field name="notas">100% BANCO, BANCO UNIVERSAL, C.A.</field>
+            <field name="code">0156</field>
+        </record>
+        
+        <record id="banco_delsur" model="caja.banco">
+            <field name="name">Banco del Sur</field>
+            <field name="code">0157</field>
+        </record>
+        
+        <record id="banco_tesoro" model="caja.banco">
+            <field name="name">Banco del Tesoro</field>
+            <field name="notas">BANCO DEL TESORO, C.A., BANCO UNIVERSAL.</field>
+            <field name="code">0163</field>
+        </record>
+        
+        <record id="banco_agricola" model="caja.banco">
+            <field name="name">Banco Agrícola</field>
+            <field name="notas">BANCO AGRÍ_x008d_COLA DE VENEZUELA, C.A.</field>
+            <field name="code">0166</field>
+        </record>
+        
+        <record id="banco_bancrecer" model="caja.banco">
+            <field name="name">Bancrecer</field>
+            <field name="notas">BANCRECER, S.A. BANCO MICROFINANCIERO.</field>
+            <field name="code">0168</field>
+        </record>
+        
+        <record id="banco_mibanco" model="caja.banco">
+            <field name="name">Mi Banco</field>
+            <field name="notas">MI BANCO, BANCO MICROFINANCIERO, C.A.</field>
+            <field name="code">0169</field>
+        </record>
+        
+        <record id="banco_activo" model="caja.banco">
+            <field name="name">Banco Activo</field>
+            <field name="notas">BANCO ACTIVO C.A., BANCO UNIVERSAL.</field>
+            <field name="code">0171</field>
+        </record>
+        
+        <record id="banco_bancamiga" model="caja.banco">
+            <field name="name">Bancamiga</field>
+            <field name="notas">BANCAMIGA BANCO UNIVERSAL, C.A.</field>
+            <field name="code">0172</field>
+        </record>
+        
+        <record id="banco_banplus" model="caja.banco">
+            <field name="name">Banplus</field>
+            <field name="notas">BANPLUS BANCO UNIVERSAL, C.A.</field>
+            <field name="code">0174</field>
+        </record>
+        
+        <record id="banco_bicentenario" model="caja.banco">
+            <field name="name">Banco Bicentenario</field>
+            <field name="notas">BANCO BICENTENARIO, DEL PUEBLO, DE LA CLASE OBRERA, MUJER Y COMUNAS, BANCO UNIVERSAL, C.A.</field>
+            <field name="code">0175</field>
+        </record>
+        
+        <record id="banco_espiritu_santo" model="caja.banco">
+            <field name="name">Banco Espíritu Santo</field>
+            <field name="code">0176</field>
+        </record>
+        
+        <record id="banco_banfanb" model="caja.banco">
+            <field name="name">BANFANB</field>
+            <field name="notas">BANCO DE LA FUERZA ARMADA NACIONAL BOLIVARIANA, BANCO UNIVERSAL, C.A. (BANFANB).</field>
+            <field name="code">0177</field>
+        </record>
+        
+        <record id="banco_bnc" model="caja.banco">
+            <field name="name">BNC</field>
+            <field name="notas">BANCO NACIONAL DE CRÉDITO, C.A. BANCO UNIVERSAL.</field>
+            <field name="code">0191</field>
+        </record>
+        
+    </data>
+</odoo>
